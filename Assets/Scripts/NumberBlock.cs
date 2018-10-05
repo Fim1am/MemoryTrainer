@@ -12,7 +12,7 @@ public class NumberBlock : MonoBehaviour
 	
 	void Start ()
     {
-        BlockNum = Random.Range(0, maxNum);
+        BlockNum = Random.Range(1, maxNum);
 
         GetComponentInChildren<UnityEngine.UI.Text>().text = BlockNum.ToString();
 	}

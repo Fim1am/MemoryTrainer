@@ -2,15 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameField : MonoBehaviour {
+public class GameField : MonoBehaviour
+{
+    [SerializeField]
+    private GameCell gameCell_Prefab;
 
-	// Use this for initialization
-	void Start () {
-		
+    private List<GameCell> activeCells;
+
+    private Transform selfTransform;
+	
+	void Start ()
+    {
+        selfTransform = transform;
+
+        ClearField();
+
+        InitGameField();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	private void InitGameField()
+    {
+        int cellsCount = (int) FindObjectOfType<GameManager>().CurrentGameMode;
+
+        for(int i = 0; i < cellsCount; i++)
+        {
+            activeCells.Add(Instantiate(gameCell_Prefab, selfTransform, false) as GameCell);
+        }
+    }
+
+    public void ClearField()
+    {
+        activeCells.Clear();
+    }
 }
