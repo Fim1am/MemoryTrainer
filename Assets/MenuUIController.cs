@@ -1,16 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class MenuUIController : MonoBehaviour {
+public class MenuUIController : MonoBehaviour
+{
+    [SerializeField]
+    private ModeButton[] modeButtons;
 
-	// Use this for initialization
-	void Start () {
-		
+	void Awake ()
+    {
+        GameManager.OnGameModeChanged += UpdateModeButtons;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void UpdateModeButtons(GameManager.GameMode _mode)
+    {
+        foreach(ModeButton b in modeButtons)
+        {
+            if(_mode == b.buttonMode)
+            {
+                b.GetComponent<Image>().color = Color.green;
+            }
+            else
+            {
+                b.GetComponent<Image>().color = Color.white;
+            }
+        }
+    }
 }

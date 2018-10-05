@@ -16,12 +16,13 @@ public class GameManager : MonoBehaviour
     private GameMode currentGameMode;
 
     public GameMode CurrentGameMode
-    { get
+    {
+        get
         {
             return currentGameMode;
         }
 
-        private set
+         set
         {
             currentGameMode = value;
             OnGameModeChanged?.Invoke(currentGameMode);
