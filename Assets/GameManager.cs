@@ -31,9 +31,24 @@ public class GameManager : MonoBehaviour
 	
 	void Start ()
     {
-        currentGameMode = GameMode.ThreeGame;
+        SetThreeGameMode();
 	}
-	
+
+    public void SetThreeGameMode()
+    {
+        CurrentGameMode = GameMode.ThreeGame;
+    }
+
+    public void SetFourGameMode()
+    {
+        CurrentGameMode = GameMode.FourGame;
+    }
+
+    public void SetFiveGameMode()
+    {
+        CurrentGameMode = GameMode.FiveGame;
+    }
+
 
 }
 
