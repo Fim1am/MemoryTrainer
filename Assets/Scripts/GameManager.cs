@@ -6,9 +6,14 @@ public class GameManager : MonoBehaviour
 {
     public static System.Action<GameMode> OnGameModeChanged;
 
+    [SerializeField]
+    private GameCanvas gameCanvas_Prefab;
+
+    private GameCanvas currentGame;
+
     public enum GameMode
     {
-        ThreeGame = 9,
+        ThreeGame = 9, // this mode contains 9 blocks on a game field etc.
         FourGame = 16,
         FiveGame = 25
     }
@@ -48,6 +53,11 @@ public class GameManager : MonoBehaviour
     public void SetFiveGameMode()
     {
         CurrentGameMode = GameMode.FiveGame;
+    }
+
+    public void StartGame()
+    {
+        currentGame = Instantiate(gameCanvas_Prefab, gameCanvas_Prefab.transform.position, Quaternion.identity);
     }
 
 

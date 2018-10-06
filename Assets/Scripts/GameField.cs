@@ -2,39 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameField : MonoBehaviour
+public class GameField : Field
 {
-    [SerializeField]
-    private GameCell gameCell_Prefab;
-
-    private List<GameCell> activeCells;
-
-    private Transform selfTransform;
-	
-	private void OnEnable ()
+    public void BlocksToQueue()
     {
-        selfTransform = transform;
-
-        ClearField();
-
-        InitGameField();
-	}
-	
-	private void InitGameField()
-    {
-        int cellsCount = (int) FindObjectOfType<GameManager>().CurrentGameMode;
-
-        for(int i = 0; i < cellsCount; i++)
+        foreach(Cell c in cells)
         {
-            activeCells.Add(Instantiate(gameCell_Prefab, selfTransform, false) as GameCell);
+            GameCanvas.Instance.QueueField.PutBlockInQueue(c.AttachedBlock);
         }
-    }
-
-    public void ClearField()
-    {
-        if (activeCells == null)
-            activeCells = new List<GameCell>();
-        else
-            activeCells.Clear();
     }
 }

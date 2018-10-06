@@ -27,4 +27,10 @@ public class MenuUIController : MonoBehaviour
             }
         }
     }
+
+    public void StartGameButton()
+    {
+        FindObjectOfType<GameManager>().StartGame();
+        gameObject.SetActive(false);
+    }
 }

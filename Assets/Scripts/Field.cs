@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Field : MonoBehaviour {
 
@@ -10,16 +11,20 @@ public class Field : MonoBehaviour {
     protected List<Cell> cells = new List<Cell>();
 
 
-    private void OnEnable()
+    private void Start()
     {
         InitField();
     }
 
     protected void InitField()
     {
-        cells.Clear();
-
         int cellsCount = (int)FindObjectOfType<GameManager>().CurrentGameMode;
+
+        GridLayoutGroup glg = GetComponent<GridLayoutGroup>();
+        glg.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+        glg.constraintCount = (int)Mathf.Sqrt(cellsCount);
+
+        cells.Clear();
 
         for (int i = 0; i < cellsCount; i++)
         {
