@@ -26,4 +26,9 @@ public class GameField : Field
         return closestCell;
 
     }
+
+    public List<Cell> GetCells()
+    {
+        return cells;
+    }
 }

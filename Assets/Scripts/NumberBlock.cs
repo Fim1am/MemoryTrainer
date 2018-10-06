@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class NumberBlock : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
+    public static System.Action OnBlockAttached;
+
     [SerializeField]
     private int maxNum = 100;
 
@@ -57,12 +59,13 @@ public class NumberBlock : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
         if(!_cell.IsEmpty())
         {
-
             GameCanvas.Instance.QueueField.PutBlockInQueue(_cell.AttachedBlock);
         }
 
         gameCell = _cell;
         gameCell.AttachedBlock = this;
+
+        OnBlockAttached?.Invoke();
     }
 
     public void OnPointerDown(PointerEventData eventData)

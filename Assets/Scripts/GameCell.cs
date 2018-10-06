@@ -6,7 +6,7 @@ public class GameCell : Cell
 {
     public NumberBlock block_Prefab;
 
-    private int originalNumber, supposedNumber;
+    private int originalNumber;
 	
 	private void Start ()
     {

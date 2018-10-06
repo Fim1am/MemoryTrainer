@@ -11,6 +11,9 @@ public class GameCanvas : MonoBehaviour
     public QueueField QueueField;
 
     [SerializeField]
+    private GameObject check_Button;
+
+    [SerializeField]
     private Image timer_Image;
 
     private float timeToRemember;
@@ -39,6 +42,31 @@ public class GameCanvas : MonoBehaviour
 
         GameField.BlocksToQueue();
 
+        NumberBlock.OnBlockAttached += CheckFullField;
+
+    }
+
+    private void CheckFullField()
+    {
+        if(GameField.GetCells().FindAll(c => c.AttachedBlock != null).Count == GameField.GetCells().Count)
+        {
+            check_Button.SetActive(true);
+        }
+    }
+
+    public void CheckFieldButton()
+    {   
+        foreach(GameCell c in GameField.GetCells())
+        {
+            if(c.HaveValidNumber())
+            {
+                c.GetComponent<Image>().color = Color.green;
+            }
+            else
+            {
+                c.GetComponent<Image>().color = Color.red;
+            }
+        }
     }
 
 }
