@@ -10,6 +10,7 @@ public class Field : MonoBehaviour {
 
     protected List<Cell> cells = new List<Cell>();
 
+    protected float distanceToPut = 25f;
 
     private void Start()
     {

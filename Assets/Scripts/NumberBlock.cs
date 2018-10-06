@@ -50,9 +50,14 @@ public class NumberBlock : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     public void AttachToCell(Cell _cell)
     {
-        transform.parent = _cell.transform;
+        transform.SetParent(_cell.transform);
         transform.localPosition = Vector3.zero;
         transform.localScale = Vector3.one;
+
+        if(!_cell.IsEmpty())
+        {
+            GameCanvas.Instance.QueueField.PutBlockInQueue(_cell.AttachedBlock);
+        }
 
         gameCell = _cell;
         gameCell.AttachedBlock = this;
@@ -61,7 +66,7 @@ public class NumberBlock : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         isHolded = true;
-        transform.parent = transform.root;
+        transform.SetParent(transform.root);
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -70,13 +75,17 @@ public class NumberBlock : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
         if(GetCellToPutOn() == null)
         {
-            transform.parent = gameCell.transform;
+            transform.SetParent(gameCell.transform);
+        }
+        else
+        {
+            AttachToCell(GetCellToPutOn());
         }
     }
 
     private Cell GetCellToPutOn()
     {
-        return null;
+        return GameCanvas.Instance.GameField.GetClosestCell(this);
     }
 
 }

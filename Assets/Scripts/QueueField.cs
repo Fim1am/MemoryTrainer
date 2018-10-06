@@ -10,5 +10,6 @@ public class QueueField : Field
         List<Cell> emptyCells = cells.FindAll(c => c.IsEmpty());
 
         _block.AttachToCell(emptyCells[Random.Range(0, emptyCells.Count)]);
+
     }
 }
