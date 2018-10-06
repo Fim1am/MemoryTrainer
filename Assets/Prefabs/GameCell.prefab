@@ -41,7 +41,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9622642, g: 0.9622642, b: 0.9622642, a: 1}
+  m_Color: {r: 0.9622642, g: 0.9622642, b: 0.9622642, a: 0.56078434}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -67,9 +67,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccdd6b75c4aa2004bb63e2fa5343ac4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttachedBlock: {fileID: 0}
   block_Prefab: {fileID: 114068258051912244, guid: c5e90a6a5ab0a4a40acc88fc9882c883,
     type: 2}
-  AttachedBlock: {fileID: 0}
 --- !u!222 &222921390045081688
 CanvasRenderer:
   m_ObjectHideFlags: 1

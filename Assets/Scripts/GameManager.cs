@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
     private GameCanvas gameCanvas_Prefab;
 
     private GameCanvas currentGame;
+
+    public int TimeToRemember { get; private set; }
 
     public enum GameMode
     {
@@ -60,6 +63,10 @@ public class GameManager : MonoBehaviour
         currentGame = Instantiate(gameCanvas_Prefab, gameCanvas_Prefab.transform.position, Quaternion.identity);
     }
 
+    public void TimeChanged(int _time)
+    {
+        TimeToRemember = _time;
+    }
 
 }
 

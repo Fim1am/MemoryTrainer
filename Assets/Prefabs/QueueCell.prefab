@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224055505989599756}
   - component: {fileID: 222723472740468024}
   - component: {fileID: 114823529569896482}
+  - component: {fileID: 114645861475272038}
   m_Layer: 5
   m_Name: QueueCell
   m_TagString: Untagged
@@ -28,6 +29,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114645861475272038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1596986471749850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a8b679ff3ec9d4f8cfc4b474bcd6fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttachedBlock: {fileID: 0}
 --- !u!114 &114823529569896482
 MonoBehaviour:
   m_ObjectHideFlags: 1

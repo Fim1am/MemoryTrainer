@@ -8,10 +8,18 @@ public class MenuUIController : MonoBehaviour
     [SerializeField]
     private ModeButton[] modeButtons;
 
-	void Awake ()
+    [SerializeField]
+    private Slider time_Slider;
+
+    [SerializeField]
+    private Text time_text;
+
+	void OnEnable ()
     {
-        GameManager.OnGameModeChanged += UpdateModeButtons;
-	}
+        GameManager.OnGameModeChanged = UpdateModeButtons;
+        time_Slider.onValueChanged.AddListener(SliderChanged);
+        time_text.text = time_Slider.value.ToString() + " s";
+    }
 	
     private void UpdateModeButtons(GameManager.GameMode _mode)
     {
@@ -32,5 +40,10 @@ public class MenuUIController : MonoBehaviour
     {
         FindObjectOfType<GameManager>().StartGame();
         gameObject.SetActive(false);
+    }
+
+    private void SliderChanged(float _val)
+    {
+        time_text.text = _val.ToString() + " s";
     }
 }
