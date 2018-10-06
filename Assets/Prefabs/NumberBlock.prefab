@@ -21,8 +21,9 @@ GameObject:
   - component: {fileID: 224473356752438234}
   - component: {fileID: 222972669694933316}
   - component: {fileID: 114695164529171956}
+  - component: {fileID: 114068258051912244}
   m_Layer: 5
-  m_Name: gameBlock
+  m_Name: NumberBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,6 +46,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114068258051912244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1124121907342774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac49f2292588a194d8ff6b92df05940c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxNum: 100
 --- !u!114 &114261411056929082
 MonoBehaviour:
   m_ObjectHideFlags: 1
