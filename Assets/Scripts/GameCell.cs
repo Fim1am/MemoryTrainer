@@ -22,7 +22,7 @@ public class GameCell : Cell
     public bool HaveValidNumber()
     {
 
-        return originalNumber == supposedNumber;
+        return AttachedBlock.BlockNum == originalNumber;
 
     }
 }

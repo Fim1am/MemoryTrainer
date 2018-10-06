@@ -12,10 +12,9 @@ public class NumberBlock : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     private Cell gameCell;
 
-    private bool isHolded, isAttached;
-
-    private Vector3 draggingOffset = new Vector3(0, 5f, -1f);
-    private Vector2 draggingScale = new Vector2(2f, 2f);
+    private bool isHolded;
+    
+    private Vector2 draggingScale = Vector2.one * 2f;
 
     private float lerpTransition = 8f;
 
@@ -36,7 +35,7 @@ public class NumberBlock : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     {
         if(isHolded)
         {
-            selfTransform.position = (Vector3)Input.mousePosition + draggingOffset;
+            selfTransform.position = Input.mousePosition;
             selfTransform.localScale = Vector2.Lerp(selfTransform.localScale, draggingScale, Time.deltaTime * lerpTransition);
         }
         else
@@ -50,12 +49,15 @@ public class NumberBlock : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     public void AttachToCell(Cell _cell)
     {
+        gameCell.AttachedBlock = null;
+
         transform.SetParent(_cell.transform);
         transform.localPosition = Vector3.zero;
         transform.localScale = Vector3.one;
 
         if(!_cell.IsEmpty())
         {
+
             GameCanvas.Instance.QueueField.PutBlockInQueue(_cell.AttachedBlock);
         }
 
@@ -67,6 +69,7 @@ public class NumberBlock : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     {
         isHolded = true;
         transform.SetParent(transform.root);
+        
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -79,6 +82,7 @@ public class NumberBlock : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         }
         else
         {
+
             AttachToCell(GetCellToPutOn());
         }
     }

@@ -10,6 +10,7 @@ public class GameField : Field
         foreach(Cell c in cells)
         {
             GameCanvas.Instance.QueueField.PutBlockInQueue(c.AttachedBlock);
+            c.AttachedBlock = null;
         }
     }
 
