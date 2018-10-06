@@ -12,7 +12,7 @@ public class NumberBlock : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     public int BlockNum { get; set; }
 
-    private Cell gameCell;
+    private Cell cell;
 
     private bool isHolded;
     
@@ -26,9 +26,13 @@ public class NumberBlock : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     {
         selfTransform = transform;
 
-        gameCell = selfTransform.parent.GetComponent<Cell>();
+        selfTransform.localPosition = Vector2.zero;
+
+        cell = selfTransform.parent.GetComponent<Cell>();
 
         BlockNum = Random.Range(1, maxNum);
+
+        (cell as GameCell).SetOriginalNumber(BlockNum);
 
         GetComponentInChildren<UnityEngine.UI.Text>().text = BlockNum.ToString();
 	}
@@ -51,7 +55,7 @@ public class NumberBlock : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     public void AttachToCell(Cell _cell)
     {
-        gameCell.AttachedBlock = null;
+        cell.AttachedBlock = null;
 
         transform.SetParent(_cell.transform);
         transform.localPosition = Vector3.zero;
@@ -62,8 +66,8 @@ public class NumberBlock : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
             GameCanvas.Instance.QueueField.PutBlockInQueue(_cell.AttachedBlock);
         }
 
-        gameCell = _cell;
-        gameCell.AttachedBlock = this;
+        cell = _cell;
+        cell.AttachedBlock = this;
 
         OnBlockAttached?.Invoke();
     }
@@ -81,7 +85,7 @@ public class NumberBlock : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
         if(GetCellToPutOn() == null)
         {
-            transform.SetParent(gameCell.transform);
+            transform.SetParent(cell.transform);
         }
         else
         {

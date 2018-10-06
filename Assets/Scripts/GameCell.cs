@@ -11,18 +11,15 @@ public class GameCell : Cell
 	private void Start ()
     {
         AttachedBlock = Instantiate(block_Prefab, transform, false) as NumberBlock;
-
-        originalNumber = AttachedBlock.BlockNum;
-
-        Transform blockTransform = AttachedBlock.transform;
-
-        blockTransform.localPosition = Vector3.zero;
 	}
 
     public bool HaveValidNumber()
     {
-
         return AttachedBlock.BlockNum == originalNumber;
+    }
 
+    public void SetOriginalNumber(int _num)
+    {
+        originalNumber = _num;
     }
 }
