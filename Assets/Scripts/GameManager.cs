@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
         FiveGame = 25
     }
 
-    private GameMode currentGameMode;
+    private GameMode currentGameMode = GameMode.ThreeGame;
 
     public GameMode CurrentGameMode
     {

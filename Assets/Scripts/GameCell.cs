@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameCell : MonoBehaviour
+public class GameCell : Cell
 {
     public NumberBlock block_Prefab;
-
-    public NumberBlock AttachedBlock;
 
     private int originalNumber, supposedNumber;
 	

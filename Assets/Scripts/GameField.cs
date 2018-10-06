@@ -11,7 +11,7 @@ public class GameField : MonoBehaviour
 
     private Transform selfTransform;
 	
-	void Start ()
+	private void OnEnable ()
     {
         selfTransform = transform;
 
@@ -32,6 +32,9 @@ public class GameField : MonoBehaviour
 
     public void ClearField()
     {
-        activeCells.Clear();
+        if (activeCells == null)
+            activeCells = new List<GameCell>();
+        else
+            activeCells.Clear();
     }
 }
