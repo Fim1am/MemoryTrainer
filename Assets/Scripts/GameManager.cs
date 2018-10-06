@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     private GameCanvas currentGame;
 
-    public int TimeToRemember { get; private set; }
+    public float TimeToRemember { get; private set; }
 
     public enum GameMode
     {
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         currentGame = Instantiate(gameCanvas_Prefab, gameCanvas_Prefab.transform.position, Quaternion.identity);
     }
 
-    public void TimeChanged(int _time)
+    public void TimeChanged(float _time)
     {
         TimeToRemember = _time;
     }

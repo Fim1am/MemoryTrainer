@@ -53,6 +53,9 @@ public class NumberBlock : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
         transform.parent = _cell.transform;
         transform.localPosition = Vector3.zero;
         transform.localScale = Vector3.one;
+
+        gameCell = _cell;
+        gameCell.AttachedBlock = this;
     }
 
     public void OnPointerDown(PointerEventData eventData)
